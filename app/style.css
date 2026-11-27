@@ -1,0 +1,474 @@
+/* DealSleuth — Black Friday 2026. Original design: warm paper, deep navy,
+   amber accent. No external fonts or images; everything is local. */
+
+:root {
+  --paper: #fff7ec;
+  --card: #ffffff;
+  --ink: #17203a;
+  --ink-soft: #4b5568;
+  --line: #ecd9bd;
+  --navy: #141c2e;
+  --navy-2: #1f2c4a;
+  --amber: #f59e0b;
+  --ember: #e8590c;
+  --green: #15803d;
+  --green-bg: #dcfce7;
+  --blue: #1d4ed8;
+  --blue-bg: #dbeafe;
+  --grey: #64748b;
+  --grey-bg: #e2e8f0;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.45;
+}
+
+a { color: var(--blue); }
+
+.topbar {
+  background: var(--navy);
+  color: #fff;
+  padding: 18px 20px 16px;
+}
+
+.topbar-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.brand-mark {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: var(--amber);
+}
+
+.brand-name {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.brand-tag {
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+.topbar h1 {
+  margin: 10px 0 4px;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.topbar p {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 14px;
+  max-width: 760px;
+}
+
+.stats-strip {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.stat {
+  background: var(--navy-2);
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.stat b {
+  color: var(--amber);
+  font-size: 16px;
+}
+
+.controls {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 16px 20px 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-box {
+  flex: 1 1 260px;
+  display: flex;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 11px 14px;
+  font-size: 15px;
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.search-box input:focus {
+  outline: 3px solid #fcd34d;
+  border-color: var(--amber);
+}
+
+.controls select {
+  padding: 11px 10px;
+  font-size: 14px;
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.chip-row {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 10px 20px 0;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  border: 2px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+}
+
+.result-line {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 12px 20px 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.result-line b { color: var(--ink); }
+
+.legend {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 8px 20px 0;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--ink-soft);
+  align-items: center;
+}
+
+.legend-title { font-weight: 800; color: var(--ink); }
+
+.grid {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 14px 20px 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(23, 32, 58, 0.07);
+}
+
+.card-top {
+  display: flex;
+  gap: 12px;
+  padding: 14px 14px 0;
+  align-items: flex-start;
+}
+
+.tile {
+  flex: 0 0 64px;
+  height: 64px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+.tile-audio { background: #ede9fe; }
+.tile-computing { background: #dbeafe; }
+.tile-tv { background: #fef3c7; }
+.tile-gaming { background: #fce7f3; }
+.tile-home { background: #dcfce7; }
+.tile-wearables { background: #cffafe; }
+.tile-streaming { background: #fee2e2; }
+
+.card h2 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.card h2 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.card h2 a:hover { text-decoration: underline; }
+
+.meta {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.store-pill {
+  display: inline-block;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 800;
+  margin-right: 6px;
+}
+
+.signal {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  margin-top: 8px;
+}
+
+.signal-new-low { background: var(--green-bg); color: var(--green); }
+.signal-strong { background: var(--blue-bg); color: var(--blue); }
+.signal-routine { background: var(--grey-bg); color: var(--grey); }
+
+.price-block {
+  padding: 12px 14px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sale-price {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--ember);
+}
+
+.usual-price {
+  font-size: 14px;
+  color: var(--ink-soft);
+  text-decoration: line-through;
+}
+
+.save-badge {
+  margin-left: auto;
+  background: var(--ember);
+  color: #fff;
+  font-weight: 900;
+  font-size: 14px;
+  border-radius: 8px;
+  padding: 4px 9px;
+}
+
+.save-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: #f1e3c8;
+  margin: 10px 14px 0;
+  overflow: hidden;
+}
+
+.save-bar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--amber), var(--ember));
+  border-radius: 999px;
+}
+
+.save-line {
+  padding: 6px 14px 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.save-line b { color: var(--green); }
+
+.evidence {
+  padding: 10px 14px 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.checked-line {
+  padding: 8px 14px 0;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.card-actions {
+  margin-top: auto;
+  padding: 14px;
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  flex: 1;
+  text-align: center;
+  background: var(--ember);
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 10px 12px;
+  text-decoration: none;
+}
+
+.btn:hover { background: #c2410c; }
+
+.btn-ghost {
+  flex: 0 0 auto;
+  background: #fff;
+  color: var(--ink);
+  border: 2px solid var(--line);
+}
+
+.btn-ghost:hover { border-color: var(--amber); }
+
+.empty {
+  max-width: 1180px;
+  margin: 20px auto;
+  padding: 30px 20px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 16px;
+}
+
+/* Detail page */
+.detail {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.detail-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: 0 2px 10px rgba(23, 32, 58, 0.08);
+}
+
+.detail-card .tile {
+  width: 64px;
+  flex-basis: auto;
+}
+
+.detail-card h1 {
+  margin: 8px 0 4px;
+  font-size: 26px;
+}
+
+.detail-prices {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin: 16px 0 6px;
+}
+
+.detail-prices .sale-price { font-size: 38px; }
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 24px;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.detail-grid dt {
+  font-weight: 800;
+  color: var(--ink-soft);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-grid dd { margin: 2px 0 10px; }
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.verdict-box {
+  background: var(--paper);
+  border-left: 5px solid var(--amber);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.footer {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 10px 20px 34px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.footer a { color: var(--ink-soft); }
+
+@media (max-width: 640px) {
+  .topbar h1 { font-size: 20px; }
+  .brand-name { font-size: 22px; }
+  .grid { grid-template-columns: 1fr 1fr; gap: 10px; padding: 12px 12px 24px; }
+  .card-top { flex-direction: column; gap: 8px; }
+  .tile { flex-basis: 52px; height: 52px; font-size: 24px; }
+  .card h2 { font-size: 14px; }
+  .sale-price { font-size: 21px; }
+  .detail-grid { grid-template-columns: 1fr; }
+  .controls, .chip-row, .result-line, .legend, .footer { padding-left: 12px; padding-right: 12px; }
+}
